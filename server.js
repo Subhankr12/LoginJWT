@@ -6,6 +6,7 @@ const mongoose = require("mongoose")
 //Import Routes
 const authRoute = require("./routes/auth")
 const postRoute = require("./routes/posts")
+const bodyParser = require("body-parser")
 
 dotenv.config()
 
@@ -17,6 +18,7 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
 )
 
 //Middleware
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 app.use(express.json())
 
