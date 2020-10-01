@@ -34,5 +34,17 @@ const loginValidation = data => {
   return schema.validate(data)
 }
 
+const addressValidation = data => {
+  const schema = Joi.object({
+    street: Joi.string().min(10).required(),
+    locality: Joi.string().min(10).required(),
+    city: Joi.string().min(3).required(),
+    country: Joi.string().min(7).required(),
+
+  })
+}
+
+
 module.exports.registerValidation = registerValidation
 module.exports.loginValidation = loginValidation
+module.exports.addressValidation = addressValidation
